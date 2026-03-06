@@ -3,74 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マヤ暦ガイド・マニクの庭</title>
+    <title>マヤ暦鑑定士 儷和（レイカ）- 公式サイト</title>
     <style>
-        /* 全体の背景設定 */
         body { 
-            font-family: 'Times New Roman', serif; 
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            color: #fff;
-            /* マヤの夜空をイメージしたグラデーション */
+            font-family: 'Times New Roman', 'serif', 'Hiragino Mincho ProN'; 
+            margin: 0; padding: 0; min-height: 100vh; color: #fff;
             background: linear-gradient(135deg, #0b0d17 0%, #1c2541 50%, #3a506b 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        /* 大天使ハニエルの配置（右上ひっそりと） */
+        /* 大天使ハニエル（右上に配置） */
         .angel-haniel {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            width: 120px;
-            height: auto;
-            opacity: 0.4; /* ひっそりと表示 */
-            pointer-events: none; /* クリックの邪魔をしない */
-            z-index: 100;
+            position: fixed; top: 10px; right: 10px; width: 100px; height: auto;
+            opacity: 0.35; pointer-events: none; z-index: 100;
         }
 
         .container {
-            max-width: 600px;
-            width: 90%;
-            margin: 60px auto;
-            text-align: center;
-            z-index: 10;
+            max-width: 600px; width: 90%; margin: 50px auto; text-align: center; z-index: 10;
         }
 
         /* 今日のKIN表示カード */
         .kin-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
-            padding: 40px 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 40px;
+            border-radius: 25px;
+            padding: 30px 15px;
+            margin-bottom: 35px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
         }
 
-        .kin-label { font-size: 1.2rem; letter-spacing: 0.3em; color: #a0ced9; }
-        .kin-number { font-size: 4rem; font-weight: bold; margin: 15px 0; text-shadow: 0 0 20px #fff; }
+        .kin-label { font-size: 0.9rem; letter-spacing: 0.4em; color: #a0ced9; margin-bottom: 10px; }
+        .kin-number { font-size: 3.2rem; font-weight: bold; margin: 5px 0; text-shadow: 0 0 15px rgba(255,255,255,0.5); }
+        .kin-details { font-size: 1.3rem; color: #fdfaf0; letter-spacing: 0.1em; margin-top: 10px; }
 
-        /* メッセージエリア */
-        .message { line-height: 1.8; margin-bottom: 40px; color: #e0e1dd; }
+        h1 { font-size: 1.8rem; margin: 20px 0 5px; letter-spacing: 0.1em; }
+        .profile { font-size: 0.95rem; line-height: 1.8; margin-bottom: 40px; color: #e0e1dd; padding: 0 10px; }
 
-        /* 各種リンクボタン */
         .btn-group { display: flex; flex-direction: column; gap: 15px; }
         .btn {
-            text-decoration: none;
-            padding: 15px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-decoration: none; padding: 16px; border-radius: 50px; font-weight: bold;
+            transition: 0.3s; border: 1px solid rgba(255, 255, 255, 0.3); text-align: center;
         }
-        .btn-main { background: #d35400; color: white; border: none; } /* 鑑定用：力強いオレンジ */
-        .btn-sub { background: rgba(255, 255, 255, 0.1); color: white; } /* note用 */
+        .btn-main { background: #d35400; color: white; border: none; }
+        .btn-sub { background: rgba(255, 255, 255, 0.15); color: white; }
 
-        footer { margin-top: auto; padding: 20px; font-size: 0.8rem; color: #666; }
+        footer { margin-top: auto; padding: 30px; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
     </style>
 </head>
 <body>
@@ -79,35 +57,44 @@
 
     <div class="container">
         <div class="kin-card">
-            <div class="kin-label">— TODAY'S KIN —</div>
-            <div id="kin-display" class="kin-number">KIN 87</div>
-            <div style="font-size: 0.9rem; color: #a0ced9;">銀河のリズムと共鳴する</div>
+            <div class="kin-label">TODAY'S ENERGY</div>
+            <div id="kin-display" class="kin-number">KIN ---</div>
+            <div id="kin-details" class="kin-details">宇宙のリズムを読み解く</div>
         </div>
 
-        <div class="message">
-            私はマニク。KIN 87、青い太陽の手のエネルギーを持つガイドです。<br>
-            あなたが本来持っている「癒やし」と「遂行」の力を呼び覚ますお手伝いをします。<br>
-            右下のボタンから、いつでも私に語りかけてください。
+        <h1>マヤ暦鑑定士 儷和（レイカ）</h1>
+        <div class="profile">
+            宇宙の巡り、魂の航海図を読み解き、<br>
+            あなたが本来の輝きを取り戻すお手伝いをいたします。<br>
+            右下の案内人「マニク」も、あなたの旅をサポートします。
         </div>
 
         <div class="btn-group">
             <a href="#" class="btn btn-main">🔮 個人鑑定（準備中）</a>
-            <a href="#" class="btn btn-sub">📝 日々の記録（note）</a>
+            <a href="https://note.com/" target="_blank" class="btn btn-sub">📝 儷和のnote（準備中）</a>
         </div>
     </div>
 
-    <footer>
-        &copy; 2026 13の月の暦・銀河の羅針盤
-    </footer>
+    <footer>&copy; 2026 儷和 - Maya Galactic Calendar Guide</footer>
 
     <script>
+        const solarSeals = ["赤い龍", "白い風", "青い夜", "黄色い種", "赤い蛇", "白い世界の橋渡し", "青い手", "黄色い星", "赤い月", "白い犬", "青い猿", "黄色い人", "赤い空歩く者", "白い魔法使い", "青い嵐", "黄色い太陽", "赤い地球", "白い鏡", "青い夜明け", "黄色い戦士"];
+        
         function updateKin() {
-            const baseDate = new Date('2023-02-04'); 
+            const baseDate = new Date('2023-02-04'); // KIN 1の日
             const today = new Date();
             const diff = Math.floor((today - baseDate) / (1000 * 60 * 60 * 24));
             let kin = (diff % 260) + 1;
             if (kin <= 0) kin += 260;
+
+            // 紋章と音の計算
+            let tone = kin % 13;
+            if (tone === 0) tone = 13;
+            let sealIndex = (kin - 1) % 20;
+            let seal = solarSeals[sealIndex];
+
             document.getElementById('kin-display').innerText = "KIN " + kin;
+            document.getElementById('kin-details').innerText = seal + " / 音" + tone;
         }
         updateKin();
     </script>
@@ -116,6 +103,5 @@
       window.difyChatbotConfig = { token: 'z2Z7NNAQOtneOpv3' }
     </script>
     <script src="https://udify.app/embed.min.js" id="z2Z7NNAQOtneOpv3" defer></script>
-
 </body>
 </html>
