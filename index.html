@@ -3,66 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>13の月の暦・銀河の羅針盤</title>
+    <title>マヤ暦ガイド・マニクの庭</title>
     <style>
+        /* 全体の背景設定 */
         body { 
-            font-family: sans-serif; 
-            text-align: center; 
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 100%); 
-            color: white;
-            margin: 0; padding: 20px;
+            font-family: 'Times New Roman', serif; 
+            margin: 0;
+            padding: 0;
             min-height: 100vh;
+            color: #fff;
+            /* マヤの夜空をイメージしたグラデーション */
+            background: linear-gradient(135deg, #0b0d17 0%, #1c2541 50%, #3a506b 100%);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            overflow-x: hidden;
         }
-        .container { 
-            background: rgba(255, 255, 255, 0.95); 
-            padding: 40px 20px; 
-            border-radius: 25px; 
-            max-width: 500px; 
-            width: 100%;
-            color: #333;
+
+        /* 大天使ハニエルの配置（右上ひっそりと） */
+        .angel-haniel {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 120px;
+            height: auto;
+            opacity: 0.4; /* ひっそりと表示 */
+            pointer-events: none; /* クリックの邪魔をしない */
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            margin: 60px auto;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* 今日のKIN表示カード */
+        .kin-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 40px 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
         }
-        #kin-display { font-size: 3.5rem; color: #d35400; font-weight: bold; margin: 15px 0; }
-        .description { font-size: 1rem; color: #555; line-height: 1.6; }
+
+        .kin-label { font-size: 1.2rem; letter-spacing: 0.3em; color: #a0ced9; }
+        .kin-number { font-size: 4rem; font-weight: bold; margin: 15px 0; text-shadow: 0 0 20px #fff; }
+
+        /* メッセージエリア */
+        .message { line-height: 1.8; margin-bottom: 40px; color: #e0e1dd; }
+
+        /* 各種リンクボタン */
+        .btn-group { display: flex; flex-direction: column; gap: 15px; }
+        .btn {
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-main { background: #d35400; color: white; border: none; } /* 鑑定用：力強いオレンジ */
+        .btn-sub { background: rgba(255, 255, 255, 0.1); color: white; } /* note用 */
+
+        footer { margin-top: auto; padding: 20px; font-size: 0.8rem; color: #666; }
     </style>
 </head>
 <body>
 
+    <img src="https://images.unsplash.com/photo-1502791451862-7bd8c1df43a7?auto=format&fit=crop&q=80&w=200" alt="Angel" class="angel-haniel">
+
     <div class="container">
-        <h1>✨ 本日のマヤのエネルギー ✨</h1>
-        <div id="kin-display">KIN 87</div>
-        <p class="description">
-            本来のリズムを思い出すガイドとして。<br>
-            <strong>右下の青いボタン</strong>を押して、<br>AIコンシェルジュに相談してみてね。
-        </p>
+        <div class="kin-card">
+            <div class="kin-label">— TODAY'S KIN —</div>
+            <div id="kin-display" class="kin-number">KIN 87</div>
+            <div style="font-size: 0.9rem; color: #a0ced9;">銀河のリズムと共鳴する</div>
+        </div>
+
+        <div class="message">
+            私はマニク。KIN 87、青い太陽の手のエネルギーを持つガイドです。<br>
+            あなたが本来持っている「癒やし」と「遂行」の力を呼び覚ますお手伝いをします。<br>
+            右下のボタンから、いつでも私に語りかけてください。
+        </div>
+
+        <div class="btn-group">
+            <a href="#" class="btn btn-main">🔮 個人鑑定（準備中）</a>
+            <a href="#" class="btn btn-sub">📝 日々の記録（note）</a>
+        </div>
     </div>
 
-    <script>
-      window.difyChatbotConfig = {
-        token: 'z2Z7NNAQOtneOpv3'
-      }
-    </script>
-    <script
-      src="https://udify.app/embed.min.js"
-      id="z2Z7NNAQOtneOpv3"
-      defer>
-    </script>
+    <footer>
+        &copy; 2026 13の月の暦・銀河の羅針盤
+    </footer>
 
     <script>
-        function calculateKin() {
+        function updateKin() {
             const baseDate = new Date('2023-02-04'); 
             const today = new Date();
-            const diffTime = today - baseDate;
-            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            let kin = (diffDays % 260) + 1;
+            const diff = Math.floor((today - baseDate) / (1000 * 60 * 60 * 24));
+            let kin = (diff % 260) + 1;
             if (kin <= 0) kin += 260;
             document.getElementById('kin-display').innerText = "KIN " + kin;
         }
-        calculateKin();
+        updateKin();
     </script>
+
+    <script>
+      window.difyChatbotConfig = { token: 'z2Z7NNAQOtneOpv3' }
+    </script>
+    <script src="https://udify.app/embed.min.js" id="z2Z7NNAQOtneOpv3" defer></script>
 
 </body>
 </html>
