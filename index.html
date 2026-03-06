@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13の月の暦・銀河の羅針盤</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            text-align: center; 
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 100%); 
+            color: white;
+            margin: 0; padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container { 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 40px 20px; 
+            border-radius: 25px; 
+            max-width: 500px; 
+            width: 100%;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        #kin-display { font-size: 3.5rem; color: #d35400; font-weight: bold; margin: 15px 0; }
+        .description { font-size: 1rem; color: #555; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>✨ 本日のマヤのエネルギー ✨</h1>
+        <div id="kin-display">KIN 87</div>
+        <p class="description">
+            本来のリズムを思い出すガイドとして。<br>
+            <strong>右下の青いボタン</strong>を押して、<br>AIコンシェルジュに相談してみてね。
+        </p>
+    </div>
+
+    <script>
+      window.difyChatbotConfig = {
+        token: 'z2Z7NNAQOtneOpv3'
+      }
+    </script>
+    <script
+      src="https://udify.app/embed.min.js"
+      id="z2Z7NNAQOtneOpv3"
+      defer>
+    </script>
+
+    <script>
+        function calculateKin() {
+            const baseDate = new Date('2023-02-04'); 
+            const today = new Date();
+            const diffTime = today - baseDate;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            let kin = (diffDays % 260) + 1;
+            if (kin <= 0) kin += 260;
+            document.getElementById('kin-display').innerText = "KIN " + kin;
+        }
+        calculateKin();
+    </script>
+
+</body>
+</html>
