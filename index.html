@@ -3,76 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マヤ暦鑑定士 儷和（レイカ）- 公式サイト</title>
+    <title>マヤ暦アドバイザー 儷和（レイカ）- 公式サイト</title>
     <style>
         body {
             font-family: 'Times New Roman', 'serif', 'Hiragino Mincho ProN';
             margin: 0; padding: 0; min-height: 100vh; color: #fff;
-            /* 背景：宇宙の深淵と黄金の光をイメージしたグラデーション */
-            background: radial-gradient(circle at top right, #1c2541, #0b0d17),
-                        linear-gradient(180deg, #0b0d17 0%, #1c2541 70%, #3a506b 100%);
+            /* 黄金の輝きを再現したグラデーション */
+            background: radial-gradient(circle at center, #f39c12 0%, #d35400 70%, #2c3e50 100%);
+            background-attachment: fixed;
             display: flex; flex-direction: column; align-items: center;
             overflow-x: hidden;
         }
-
-        .container {
-            max-width: 600px; width: 90%; margin: 80px auto 40px; text-align: center; z-index: 10;
-        }
-
-        /* KINカード：少し透明感を出して高級感を */
+        .container { max-width: 600px; width: 90%; margin: 60px auto 40px; text-align: center; z-index: 10; }
         .kin-card {
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
-            padding: 40px 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 30px;
+            padding: 30px 20px; margin-bottom: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
+        .kin-label { font-size: 0.8rem; letter-spacing: 0.4em; color: #fff; opacity: 0.9; }
+        .kin-number { font-size: 3.5rem; font-weight: bold; margin: 10px 0; text-shadow: 0 0 15px rgba(255,255,255,0.4); }
+        .kin-details { font-size: 1.4rem; color: #fff; letter-spacing: 0.1em; }
+        
+        h1 { font-size: 1.7rem; margin: 25px 0 10px; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .title-sub { font-size: 0.9rem; display: block; margin-bottom: 5px; color: #f1c40f; font-weight: bold; }
 
-        .kin-label { font-size: 0.85rem; letter-spacing: 0.5em; color: #a0ced9; text-transform: uppercase; }
-        .kin-number { font-size: 3.8rem; font-weight: bold; margin: 15px 0; text-shadow: 0 0 20px rgba(255,255,255,0.3); }
-        .kin-details { font-size: 1.5rem; color: #fdfaf0; letter-spacing: 0.15em; font-weight: 500; }
-
-        h1 { font-size: 1.9rem; margin: 30px 0 10px; letter-spacing: 0.1em; color: #fdfaf0; }
-        .profile { font-size: 1rem; line-height: 1.9; margin-bottom: 50px; color: #e0e1dd; }
-
-        .btn-group { display: flex; flex-direction: column; gap: 18px; }
+        .profile { font-size: 0.95rem; line-height: 1.8; margin-bottom: 40px; color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
+        .btn-group { display: flex; flex-direction: column; gap: 15px; }
         .btn {
-            text-decoration: none; padding: 18px; border-radius: 50px; font-weight: bold;
-            transition: 0.3s; border: 1px solid rgba(255, 255, 255, 0.3); text-align: center;
-            letter-spacing: 0.05em;
+            text-decoration: none; padding: 16px; border-radius: 50px; font-weight: bold;
+            transition: 0.3s; border: 1px solid rgba(255, 255, 255, 0.4); text-align: center;
         }
-        /* ボタン色：マヤの情熱（赤）と知性（青）の中間、深みのあるオレンジ */
-        .btn-main { background: #d35400; color: white; border: none; box-shadow: 0 10px 20px rgba(211, 84, 0, 0.3); }
-        .btn-sub { background: rgba(255, 255, 255, 0.12); color: white; }
-        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
-
-        footer { margin-top: auto; padding: 40px; font-size: 0.75rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }
+        .btn-main { background: #e67e22; color: white; border: none; box-shadow: 0 8px 15px rgba(0,0,0,0.3); }
+        .btn-sub { background: rgba(255, 255, 255, 0.15); color: white; }
+        footer { margin-top: auto; padding: 30px; font-size: 0.7rem; color: rgba(255,255,255,0.6); z-index: 5; }
     </style>
 </head>
 <body>
-
     <div class="container">
         <div class="kin-card">
             <div class="kin-label">— Today's Energy —</div>
             <div id="kin-display" class="kin-number">KIN ---</div>
             <div id="kin-details" class="kin-details">銀河の音と紋章</div>
         </div>
-
-        <h1>マヤ暦鑑定士 儷和（レイカ）</h1>
+        
+        <h1>
+            <span class="title-sub">マヤ暦アドバイザー</span>
+            儷和（レイカ）
+        </h1>
+        
         <div class="profile">
-            宇宙の巡り、魂の航海図を読み解き、<br>
-            あなたが本来の輝きを取り戻すお手伝いをいたします。<br>
+            宇宙の巡り、魂の航海図を読み解き、本来の輝きを取り戻すお手伝いをいたします。<br>
             右下の案内人「マニク」も、あなたの旅をサポートします。
         </div>
-
         <div class="btn-group">
             <a href="#" class="btn btn-main">🔮 個人鑑定（準備中）</a>
             <a href="https://note.com/" target="_blank" class="btn btn-sub">📝 儷和のnote（準備中）</a>
         </div>
     </div>
-
     <footer>&copy; 2026 REIKA - Galactic Mayan Astrology</footer>
 
     <script>
@@ -93,10 +80,7 @@
     </script>
 
     <script>
-      window.difyChatbotConfig = {
-        token: 'vNaNRHhOTuduR3K0',
-        inputs: {}
-      }
+      window.difyChatbotConfig = { token: 'vNaNRHhOTuduR3K0', inputs: {} }
     </script>
     <script src="https://udify.app/embed.min.js" id="vNaNRHhOTuduR3K0" defer></script>
 </body>
